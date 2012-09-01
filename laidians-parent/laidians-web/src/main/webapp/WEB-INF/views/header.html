@@ -1,0 +1,8 @@
+<html>
+<head>
+  <title>VelocityTools</title>
+#if( $stylesheet )
+  <style type="text/css" media="screen">@import "$link.relative($!{stylesheet})";</style>
+#end
+</head>
+<body#if( $onload ) onload="$onload"#end>
