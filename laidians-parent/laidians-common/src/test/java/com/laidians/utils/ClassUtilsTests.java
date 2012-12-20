@@ -8,7 +8,7 @@ import junit.framework.TestCase;
 /**
  * @author Alex Snaps
  */
-public class ClassUtilsTest extends TestCase{
+public class ClassUtilsTests extends TestCase{
 
     public void testIsAnnotationPresentOnSuperClass() throws Exception {
         assertTrue(ClassUtils.isAnnotationPresent(BaseJob.class, DisallowConcurrentExecution.class));
