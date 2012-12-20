@@ -1,5 +1,5 @@
 /**
-* Copyright(c) 2004-2012, 360buy.com  All Rights Reserved
+* Copyright(c) 2004-2012, wxylon@gmail.com  All Rights Reserved
 */
 
 package com.laidians.utils;
