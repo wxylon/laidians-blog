@@ -2,7 +2,7 @@
 * Copyright(c) 2002-2012, wxylon@gmail.com  All Rights Reserved
 */
 
-package com.laidians.framework.web.action.annotation;
+package com.laidians.core.web.action.annotation;
 
 /**
  * 使用注解时使用的基础控制器类

@@ -2,7 +2,7 @@
 * Copyright(c) 2002-2012, wxylon@gmail.com  All Rights Reserved
 */
 
-package com.laidians.framework.web.action.multiaction;
+package com.laidians.core.web.action.multiaction;
 
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
