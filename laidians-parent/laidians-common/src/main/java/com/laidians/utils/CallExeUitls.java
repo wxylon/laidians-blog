@@ -17,17 +17,37 @@ import org.apache.log4j.Logger;
  */
 public class CallExeUitls {
 	private static Logger log = Logger.getLogger(CallExeUitls.class);
-	private String batFilePath;
 	
 	// 2.0调用其他的可执行文件，例如：自己制作的exe，或是下载安装的软件
-	public boolean openCsv2SQLserverExe(String ... params){
-		boolean ifSuccess = false;
+	public boolean openCsv2SQLserverExe(String ... params) throws CallExeException{
+		
+		if(null == params || params.length == 0){
+			throw new IllegalArgumentException("params must not be null");
+		}
+		String main = params[0];
+		String directory  = main.substring(0, main.lastIndexOf("\\")+1);
+		
+		if (this.log.isInfoEnabled()) {
+			this.log.info("CallExe: " + toString(params) + ": execute started");
+		}
+		
+		long startTime = System.currentTimeMillis();
+		
+		doIt(main, directory, params);
+		
+		if (this.log.isInfoEnabled()) {
+			long elapsedTime = System.currentTimeMillis() - startTime;
+			this.log.info("CallExe: execute completed in " + elapsedTime + " ms");
+		}
+		return true;
+	}
+	
+	private boolean doIt(String batFilePath, String directory, String ... params) throws CallExeException{
 		BufferedReader stdlog = null;
 		BufferedReader stdError = null;
+		StringBuilder messages = new StringBuilder();
+		StringBuilder errors = new StringBuilder();
 		try {
-			String directory  = batFilePath.endsWith(".exe") ? batFilePath.substring(0, batFilePath.lastIndexOf("\\")+1) : batFilePath;
-			log.info("Python's exe commands: " + toString(params));
-			log.info("Python's exe directory: " + directory);
 			ProcessBuilder builder = new ProcessBuilder(); 
 			builder.command(params);
 			builder.directory(new File(directory));
@@ -35,20 +55,38 @@ public class CallExeUitls {
 			stdlog = new BufferedReader(new InputStreamReader(pid.getInputStream()));
 			stdError = new BufferedReader(new InputStreamReader(pid.getErrorStream()));
 			String line;
+			int index = 0;
 			while ((line = stdlog.readLine()) != null) {
-				log.info("call python exe log:" + line);
+				if(index > 0){
+					messages.append("\r\n");
+				}
+				messages.append(line);
+				index++;
 			}
+			if (messages.length() > 0) {
+				this.log.info(messages.toString());
+			}
+			index = 0;
 			while ((line = stdError.readLine()) != null) {
-				log.error("call python exe error:" + line);
+				if(index > 0){
+					errors.append("\r\n");
+				}
+				errors.append(line);
+				index++;
+			}
+			if (errors.length() > 0) {
+				CallExeException callExeException = new CallExeException(errors.toString());
+				this.log.error(messages.toString(), callExeException);
+				throw callExeException;
 			}
 			pid.waitFor();
-			ifSuccess = true;
+			return true;
 		} catch (InterruptedException e) {
-			ifSuccess = false;
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
+			throw new CallExeException(e.getMessage(), e);
 		} catch (IOException e) {
-			ifSuccess = true;
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
+			throw new CallExeException(e.getMessage(), e);
 		}finally{
 			try {
 				if(null != stdlog){
@@ -58,28 +96,24 @@ public class CallExeUitls {
 					stdError.close();
 				}
 			} catch (IOException e) {
-				e.printStackTrace();
+				log.error(e.getMessage(), e);
+				throw new CallExeException(e.getMessage(), e);
 			}
 		}
-		return ifSuccess;
-	}
-
-	public String getBatFilePath() {
-		return batFilePath;
-	}
-
-	public void setBatFilePath(String batFilePath) {
-		this.batFilePath = batFilePath;
 	}
 	
 	public String toString(String ... params){
 		StringBuilder builder = new StringBuilder();
+		builder.append("\"");
 		for(int i = 0; i < params.length; i++){
 			if(i != 0){
 				builder.append(" ");
+				builder.append("'"+params[i]+"'");
+			}else{
+				builder.append(params[i]);
 			}
-			builder.append("\""+params[i]+"\"");
 		}
+		builder.append("\"");
 		return builder.toString();
 	}
 }

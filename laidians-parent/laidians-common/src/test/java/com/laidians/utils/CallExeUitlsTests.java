@@ -12,18 +12,22 @@ import org.junit.Test;
  */
 public class CallExeUitlsTests {
 	
-	
-	public static void  main(String args[]){
+//	@Test
+	public void testOpenCsv2SQLserverExeNullParams() throws CallExeException{
 		CallExeUitls callExeUitls = new CallExeUitls();
-		callExeUitls.setBatFilePath("D:\\csv2sqlserver\\dist\\");
-		callExeUitls.openCsv2SQLserverExe("D:\\csv2sqlserver\\dist\\main.exe", "testAuto", "ftp download",  "44");
+		callExeUitls.openCsv2SQLserverExe();
 	}
 	
 	@Test
-	public void testOpenCsv2SQLserverExe(){
+	public void testOpenCsv2SQLserverExe() throws CallExeException{
 		CallExeUitls callExeUitls = new CallExeUitls();
-		callExeUitls.setBatFilePath("D:\\csv2sqlserver\\dist\\main.exe");
-		callExeUitls.openCsv2SQLserverExe(" \"testAuto\" \"ftp download\" \"74\"");
+		callExeUitls.openCsv2SQLserverExe("D:\\csv2sqlserver\\dist\\main.exe", "testAuto", "ftp download",  "44");
+	}
+	
+//	@Test
+	public void testExe() throws CallExeException{
+		CallExeUitls callExeUitls = new CallExeUitls();
+		callExeUitls.openCsv2SQLserverExe("D:\\csv2sqlserver\\dist\\i++and++i.exe");
 	}
 	
 }
