@@ -8,7 +8,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.laidians.framework.web.action.annotation.BaseActionController;
+import com.laidians.core.web.action.annotation.BaseActionController;
+
 
 /**
  * 动态控制器入口
