@@ -28,12 +28,47 @@
 		<property name="suffix" value=".html" />
 		<property name="cache" value="false" />
 		<property name="contentType" value="text/html;charset=utf-8" />
-		<property name="viewClass" value="org.springframework.web.servlet.view.velocity.VelocityLayoutView" />
 		<property name="layoutUrl" value="/layout/Default.html" />
 		<property name="layoutKey" value="layout" />
 		<property name="screenContentKey" value="screen_content" />
 		<property name="exposeSpringMacroHelpers" value="true" />
 		<property name="dateToolAttribute" value="dateTool" />
 		<property name="numberToolAttribute" value="numberTool" />
+		<property name="attributesMap" ref="_urlBuilderMap" />
+		<property name="toolboxConfigLocation"  value="/WEB-INF/classes/spring/velocitytool-config.xml"/>
 	</bean>
+	
+	<bean id="_urlBuilderMap" class="java.util.HashMap">
+		<constructor-arg>
+        	<map>
+        		<entry key="laidiansHome">
+					<bean class="com.laidians.core.web.url.UrlBuilder">
+						<constructor-arg value="http://www.laidians.com/" />
+					</bean>
+				</entry>
+				<entry key="laidiansLogin">
+					<bean class="com.laidians.core.web.url.UrlBuilder">
+						<constructor-arg value="http://sso.laidians.com/" />
+					</bean>
+				</entry>
+        	</map>
+        </constructor-arg>
+	</bean>
+	
+	
+	<bean id="urlBuilders" class="com.laidians.core.web.url.UrlBuilders">
+         <constructor-arg ref="_urlBuilderMap"/>
+	</bean>
+	
+	
+	
+	<bean name="velocityLayoutView"  class="org.springframework.web.servlet.view.velocity.VelocityLayoutView">
+        <property name="toolAttributes"> 
+            <map>
+                <entry key="stringUtils" value="org.apache.commons.lang.StringUtils">
+                </entry>
+            </map>
+        </property>  
+         <property name="url" value="/" />  
+    </bean>
 </beans>
