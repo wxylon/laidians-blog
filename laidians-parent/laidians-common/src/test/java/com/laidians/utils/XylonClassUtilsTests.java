@@ -8,15 +8,15 @@ import junit.framework.TestCase;
 /**
  * @author Alex Snaps
  */
-public class ClassUtilsTests extends TestCase{
+public class XylonClassUtilsTests extends TestCase{
 
     public void testIsAnnotationPresentOnSuperClass() throws Exception {
-        assertTrue(ClassUtils.isAnnotationPresent(BaseJob.class, DisallowConcurrentExecution.class));
-        assertFalse(ClassUtils.isAnnotationPresent(BaseJob.class, PersistJobDataAfterExecution.class));
-        assertTrue(ClassUtils.isAnnotationPresent(ExtendedJob.class, DisallowConcurrentExecution.class));
-        assertFalse(ClassUtils.isAnnotationPresent(ExtendedJob.class, PersistJobDataAfterExecution.class));
-        assertTrue(ClassUtils.isAnnotationPresent(ReallyExtendedJob.class, DisallowConcurrentExecution.class));
-        assertTrue(ClassUtils.isAnnotationPresent(ReallyExtendedJob.class, PersistJobDataAfterExecution.class));
+        assertTrue(XylonClassUtils.isAnnotationPresent(BaseJob.class, DisallowConcurrentExecution.class));
+        assertFalse(XylonClassUtils.isAnnotationPresent(BaseJob.class, PersistJobDataAfterExecution.class));
+        assertTrue(XylonClassUtils.isAnnotationPresent(ExtendedJob.class, DisallowConcurrentExecution.class));
+        assertFalse(XylonClassUtils.isAnnotationPresent(ExtendedJob.class, PersistJobDataAfterExecution.class));
+        assertTrue(XylonClassUtils.isAnnotationPresent(ReallyExtendedJob.class, DisallowConcurrentExecution.class));
+        assertTrue(XylonClassUtils.isAnnotationPresent(ReallyExtendedJob.class, PersistJobDataAfterExecution.class));
     }
     
     @PersistJobDataAfterExecution
