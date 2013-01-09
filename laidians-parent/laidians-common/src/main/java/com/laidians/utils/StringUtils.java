@@ -143,10 +143,12 @@ public abstract class StringUtils {
 	}
 
 	/**
-	 * Trim leading and trailing whitespace from the given String.
-	 * @param str the String to check
-	 * @return the trimmed String
+	 * 去除开头和结尾和的空白字符
+	 * @param str
+	 * @return	去空后的空格
+	 * @author wxylon@gmail.com
 	 * @see java.lang.Character#isWhitespace
+	 * @date 2013-1-9
 	 */
 	public static String trimWhitespace(String str) {
 		if (!hasLength(str)) {
@@ -163,8 +165,7 @@ public abstract class StringUtils {
 	}
 
 	/**
-	 * Trim <i>all</i> whitespace from the given String:
-	 * leading, trailing, and inbetween characters.
+	 * 去掉所有的空白字符，包括开头，结尾和中间的所有空白字符
 	 * @param str the String to check
 	 * @return the trimmed String
 	 * @see java.lang.Character#isWhitespace
@@ -187,7 +188,7 @@ public abstract class StringUtils {
 	}
 
 	/**
-	 * 去掉指定字符串头部的	空白字符
+	 * 去掉指定字符串头部的空白字符
 	 * @param str the String to check
 	 * @return the trimmed String
 	 * @see java.lang.Character#isWhitespace
@@ -204,7 +205,7 @@ public abstract class StringUtils {
 	}
 
 	/**
-	 * Trim trailing whitespace from the given String.
+	 * 去掉结尾的空白字符
 	 * @param str the String to check
 	 * @return the trimmed String
 	 * @see java.lang.Character#isWhitespace
@@ -221,7 +222,7 @@ public abstract class StringUtils {
 	}
 
 	/**
-	 * Trim all occurences of the supplied leading character from the given String.
+	 * 去掉以指定字符开头的指定字符
 	 * @param str the String to check
 	 * @param leadingCharacter the leading character to be trimmed
 	 * @return the trimmed String
