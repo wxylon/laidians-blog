@@ -70,9 +70,7 @@ public abstract class StringUtils {
 	}
 
 	/**
-	 * Check whether the given CharSequence has actual text.
-	 * More specifically, returns <code>true</code> if the string not <code>null</code>,
-	 * its length is greater than 0, and it contains at least one non-whitespace character.
+	 * 检查是否包含非空字符
 	 * <p><pre>
 	 * StringUtils.hasText(null) = false
 	 * StringUtils.hasText("") = false
@@ -99,7 +97,7 @@ public abstract class StringUtils {
 	}
 
 	/**
-	 * Check whether the given String has actual text.
+	 * 检查是否包含非空字符
 	 * More specifically, returns <code>true</code> if the string not <code>null</code>,
 	 * its length is greater than 0, and it contains at least one non-whitespace character.
 	 * @param str the String to check (may be <code>null</code>)
@@ -112,7 +110,7 @@ public abstract class StringUtils {
 	}
 
 	/**
-	 * Check whether the given CharSequence contains any whitespace characters.
+	 * 检查是否包含空白字符
 	 * @param str the CharSequence to check (may be <code>null</code>)
 	 * @return <code>true</code> if the CharSequence is not empty and
 	 * contains at least 1 whitespace character
@@ -132,7 +130,7 @@ public abstract class StringUtils {
 	}
 
 	/**
-	 * Check whether the given String contains any whitespace characters.
+	 * 检查是否包含空白字符
 	 * @param str the String to check (may be <code>null</code>)
 	 * @return <code>true</code> if the String is not empty and
 	 * contains at least 1 whitespace character
@@ -143,7 +141,7 @@ public abstract class StringUtils {
 	}
 
 	/**
-	 * 去除开头和结尾和的空白字符
+	 * 分别去掉头部和尾部出现的所有连续的空白字符
 	 * @param str
 	 * @return	去空后的空格
 	 * @author wxylon@gmail.com
@@ -165,7 +163,7 @@ public abstract class StringUtils {
 	}
 
 	/**
-	 * 去掉所有的空白字符，包括开头，结尾和中间的所有空白字符
+	 * 去掉字符串中出现的所有空白字符
 	 * @param str the String to check
 	 * @return the trimmed String
 	 * @see java.lang.Character#isWhitespace
@@ -188,7 +186,7 @@ public abstract class StringUtils {
 	}
 
 	/**
-	 * 去掉指定字符串头部的空白字符
+	 *  从字符串头部开始，去掉所有的连续的空白字符
 	 * @param str the String to check
 	 * @return the trimmed String
 	 * @see java.lang.Character#isWhitespace
@@ -205,7 +203,7 @@ public abstract class StringUtils {
 	}
 
 	/**
-	 * 去掉结尾的空白字符
+	 * 从字符串尾部开始，去掉所有的连续的空白字符
 	 * @param str the String to check
 	 * @return the trimmed String
 	 * @see java.lang.Character#isWhitespace
@@ -222,7 +220,7 @@ public abstract class StringUtils {
 	}
 
 	/**
-	 * 去掉以指定字符开头的指定字符
+	 * 从字符串头部开始，去掉所有的连续的指定字符
 	 * @param str the String to check
 	 * @param leadingCharacter the leading character to be trimmed
 	 * @return the trimmed String
@@ -239,7 +237,7 @@ public abstract class StringUtils {
 	}
 
 	/**
-	 * Trim all occurences of the supplied trailing character from the given String.
+	 * 从字符串尾部开始，去掉所有的连续的指定字符
 	 * @param str the String to check
 	 * @param trailingCharacter the trailing character to be trimmed
 	 * @return the trimmed String
@@ -257,8 +255,7 @@ public abstract class StringUtils {
 
 
 	/**
-	 * Test if the given String starts with the specified prefix,
-	 * ignoring upper/lower case.
+	 * 忽略大小写，检查是否以指定字符串开头
 	 * @param str the String to check
 	 * @param prefix the prefix to look for
 	 * @see java.lang.String#startsWith
@@ -279,8 +276,7 @@ public abstract class StringUtils {
 	}
 
 	/**
-	 * Test if the given String ends with the specified suffix,
-	 * ignoring upper/lower case.
+	 * 忽略大小写，检查是否以指定字符串结尾
 	 * @param str the String to check
 	 * @param suffix the suffix to look for
 	 * @see java.lang.String#endsWith
