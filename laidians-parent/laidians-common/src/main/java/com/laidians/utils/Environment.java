@@ -4,6 +4,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+
+/**
+ * 参考：org.apache.catalina.util.StringManager
+ * @author wxylon@gmail.com
+ * @date 2013-1-23
+ */
 public class Environment {
 
 	private static Properties properties = new Properties();
