@@ -14,7 +14,9 @@ public class EnvironmentTests {
 	
 	@Test
 	public void testGetProperty() throws Exception {
-		System.out.println(Environment.getProperty("k2"));
+		String properties = "environment.properties";
+		Environment environment = Environment.getEnvironment(properties);
+		System.out.println(environment.getString("k2"));
 	}
 }
 
