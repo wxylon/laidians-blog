@@ -1,4 +1,4 @@
-package com.laidians.blog.web.action;
+package com.laidians.web.action;
 
 
 import javax.servlet.http.HttpServletRequest;
